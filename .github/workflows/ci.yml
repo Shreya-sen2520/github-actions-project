@@ -1,11 +1,12 @@
-name: CI
+name: CI of gha project
 
 on:
-  push:
-    branches:
-      - main
+  push
 jobs:
-  first:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Hello world"
+      - name: checking out code
+        uses: actions/checkout@v4
+      - name: docker setup
+        run: docker/setup-buildx-action@v4
